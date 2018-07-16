@@ -277,6 +277,346 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/17/结巴分词的基本使用方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wang Hongpeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宏鹏同学的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/17/结巴分词的基本使用方法/" itemprop="url">
+                  结巴分词的基本使用方法
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-07-17 00:29:49 / Updated at: 00:33:09" itemprop="dateCreated datePublished" datetime="2018-07-17T00:29:49+08:00">2018-07-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>jieba是目前应用最广，评价也比较高的分词工具包</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install jieba</p>
+<p>##基本特点</p>
+<p>三种分词模式</p>
+<ul>
+<li>精确模式，试图将句子最精确地切开，适合做文本分析</li>
+<li>全模式，把句子中所有的可有成词的词语都扫描出来，速度非常快，但是不能解决歧义</li>
+<li>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词</li>
+</ul>
+<p>支持繁体分词</p>
+<p>支持自定义词典</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">tmpstr = &quot;郭靖和哀牢山三十六剑。&quot;</span><br><span class="line">res = jieba.cut(tmpstr)#精确模式</span><br><span class="line">print(res) #是一个可迭代的generator，可以使用for循环来遍历结果，本质上类似list</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;generator object Tokenizer.cut at 0x04CADA50&gt;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"/"</span>.join(res)) <span class="comment"># 用“/”把之前分好的词串起来</span></span><br></pre></td></tr></table></figure>
+<pre><code>郭靖/和/哀牢山/三十六/剑/。
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(jieba.lcut(tmpstr)) <span class="comment">#用lcut函数结果直接输出为list</span></span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;郭靖&apos;, &apos;和&apos;, &apos;哀牢山&apos;, &apos;三十六&apos;, &apos;剑&apos;, &apos;。&apos;]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"/"</span>.join(jieba.cut(tmpstr,cut_all = <span class="keyword">True</span>))) <span class="comment">#全模式（加了一个cut_all = True）,把所有可能（三十/三十六/十六）都输出了。全模式中句尾符号被去掉了</span></span><br></pre></td></tr></table></figure>
+<pre><code>郭/靖/和/哀牢山/三十/三十六/十六/剑//
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"/"</span>.join(jieba.cut_for_search(tmpstr)))<span class="comment">#搜索引擎模式cut_for_search,为了提高搜索引擎的效率，并且可以用jieba.lcut_for_search直接生成list</span></span><br></pre></td></tr></table></figure>
+<pre><code>郭靖/和/哀牢山/三十/十六/三十六/剑/。
+</code></pre>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/17/分词原理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wang Hongpeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宏鹏同学的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/17/分词原理/" itemprop="url">
+                  分词原理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-07-17 00:28:50 / Updated at: 00:30:15" itemprop="dateCreated datePublished" datetime="2018-07-17T00:28:50+08:00">2018-07-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="分词算法的分类"><a href="#分词算法的分类" class="headerlink" title="分词算法的分类"></a>分词算法的分类</h1><p>基于字符串的匹配</p>
+<ul>
+<li>即扫描字符串，如果发现字符串的字串和词相同，就算匹配</li>
+<li>通常会加入一些启发式规则，比如“正向/反向最大匹配”，“长词优先”等</li>
+<li>优点是速度快，但对歧义和未登录词处理不好</li>
+</ul>
+<p>基于统计及机器学习的分词方式</p>
+<ul>
+<li>基于人工标注的词性和统计特征进行建模，并通过模型计算分词概率</li>
+<li>常见的序列标注模型有HMM和CRF</li>
+<li>这类分词算法能很好处理歧义和未登录问题，效果比前一类效果好，但是需要大量的人工标注数据，分词速度也比较慢</li>
+</ul>
+<p>#基于字符串匹配的分词算法原理</p>
+<ul>
+<li>以现有的词典为基础进行</li>
+<li>最大匹配法：以设定的最大此长度为框架，取出其中最长的匹配词<ul>
+<li>例：“中华人民共和国”会被完整取出，而不会进一步被分词</li>
+<li>最佳匹配法：按照词典中的频率高低，优先取高频词</li>
+</ul>
+</li>
+<li>最大概率法：最句子整体进行分词，找到最佳的词汇排列组合规律<ul>
+<li>例：早上好→早上/好</li>
+</ul>
+</li>
+<li>最短路径分词：寻找单词数最少的分词方式</li>
+</ul>
+<p>#分词的难点</p>
+<ul>
+<li>分词歧义<ul>
+<li>我个人没意见</li>
+<li>三个人没意见</li>
+</ul>
+</li>
+<li>未登录词识别： 郑成功<ul>
+<li>数字</li>
+<li>实体名称/专业术语</li>
+<li>成语</li>
+<li>虚词，语气词</li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/10/松本行弘-我的编程人生/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -774,7 +1114,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -791,7 +1131,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">Tags</span>
                   
                 </div>

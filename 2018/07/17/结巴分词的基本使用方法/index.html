@@ -108,24 +108,25 @@
 
 
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="jieba是目前应用最广，评价也比较高的分词工具包 安装pip install jieba ##基本特点 三种分词模式  精确模式，试图将句子最精确地切开，适合做文本分析 全模式，把句子中所有的可有成词的词语都扫描出来，速度非常快，但是不能解决歧义 搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词  支持繁体分词 支持自定义词典 1234import jiebat">
+<meta name="keywords" content="jieba">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2018/07/06/hello-world/index.html">
+<meta property="og:title" content="结巴分词的基本使用方法">
+<meta property="og:url" content="http://yoursite.com/2018/07/17/结巴分词的基本使用方法/index.html">
 <meta property="og:site_name" content="宏鹏同学的学习笔记">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="jieba是目前应用最广，评价也比较高的分词工具包 安装pip install jieba ##基本特点 三种分词模式  精确模式，试图将句子最精确地切开，适合做文本分析 全模式，把句子中所有的可有成词的词语都扫描出来，速度非常快，但是不能解决歧义 搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词  支持繁体分词 支持自定义词典 1234import jiebat">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-06T14:36:55.747Z">
+<meta property="og:updated_time" content="2018-07-16T16:33:09.152Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="结巴分词的基本使用方法">
+<meta name="twitter:description" content="jieba是目前应用最广，评价也比较高的分词工具包 安装pip install jieba ##基本特点 三种分词模式  精确模式，试图将句子最精确地切开，适合做文本分析 全模式，把句子中所有的可有成词的词语都扫描出来，速度非常快，但是不能解决歧义 搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词  支持繁体分词 支持自定义词典 1234import jiebat">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/06/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/17/结巴分词的基本使用方法/"/>
 
 
 
@@ -135,7 +136,7 @@
   };
 </script>
 
-  <title>Hello World | 宏鹏同学的学习笔记</title>
+  <title>结巴分词的基本使用方法 | 宏鹏同学的学习笔记</title>
   
 
 
@@ -280,7 +281,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/06/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/17/结巴分词的基本使用方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wang Hongpeng">
@@ -297,7 +298,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">结巴分词的基本使用方法
               
             
           </h1>
@@ -322,7 +323,7 @@
                 
               
 
-              <time title="Post created: 2018-07-06 16:48:46 / Updated at: 22:36:55" itemprop="dateCreated datePublished" datetime="2018-07-06T16:48:46+08:00">2018-07-06</time>
+              <time title="Post created: 2018-07-17 00:29:49 / Updated at: 00:33:09" itemprop="dateCreated datePublished" datetime="2018-07-17T00:29:49+08:00">2018-07-17</time>
             
 
             
@@ -360,16 +361,28 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+        <p>jieba是目前应用最广，评价也比较高的分词工具包</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>pip install jieba</p>
+<p>##基本特点</p>
+<p>三种分词模式</p>
+<ul>
+<li>精确模式，试图将句子最精确地切开，适合做文本分析</li>
+<li>全模式，把句子中所有的可有成词的词语都扫描出来，速度非常快，但是不能解决歧义</li>
+<li>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词</li>
+</ul>
+<p>支持繁体分词</p>
+<p>支持自定义词典</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import jieba</span><br><span class="line">tmpstr = &quot;郭靖和哀牢山三十六剑。&quot;</span><br><span class="line">res = jieba.cut(tmpstr)#精确模式</span><br><span class="line">print(res) #是一个可迭代的generator，可以使用for循环来遍历结果，本质上类似list</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;generator object Tokenizer.cut at 0x04CADA50&gt;
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"/"</span>.join(res)) <span class="comment"># 用“/”把之前分好的词串起来</span></span><br></pre></td></tr></table></figure>
+<pre><code>郭靖/和/哀牢山/三十六/剑/。
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(jieba.lcut(tmpstr)) <span class="comment">#用lcut函数结果直接输出为list</span></span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;郭靖&apos;, &apos;和&apos;, &apos;哀牢山&apos;, &apos;三十六&apos;, &apos;剑&apos;, &apos;。&apos;]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"/"</span>.join(jieba.cut(tmpstr,cut_all = <span class="keyword">True</span>))) <span class="comment">#全模式（加了一个cut_all = True）,把所有可能（三十/三十六/十六）都输出了。全模式中句尾符号被去掉了</span></span><br></pre></td></tr></table></figure>
+<pre><code>郭/靖/和/哀牢山/三十/三十六/十六/剑//
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(<span class="string">"/"</span>.join(jieba.cut_for_search(tmpstr)))<span class="comment">#搜索引擎模式cut_for_search,为了提高搜索引擎的效率，并且可以用jieba.lcut_for_search直接生成list</span></span><br></pre></td></tr></table></figure>
+<pre><code>郭靖/和/哀牢山/三十/十六/三十六/剑/。
+</code></pre>
       
     </div>
 
@@ -387,6 +400,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/jieba/" rel="tag"># jieba</a>
+          
+        </div>
+      
 
       
       
@@ -396,15 +415,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/07/17/分词原理/" rel="next" title="分词原理">
+                <i class="fa fa-chevron-left"></i> 分词原理
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/06/第一篇博客/" rel="prev" title="第一篇博客">
-                第一篇博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -533,7 +552,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li></ol></div>
             
 
           </div>
