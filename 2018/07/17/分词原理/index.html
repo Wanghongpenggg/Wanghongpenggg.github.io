@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="宏鹏同学的学习笔记">
 <meta property="og:description" content="分词算法的分类基于字符串的匹配  即扫描字符串，如果发现字符串的字串和词相同，就算匹配 通常会加入一些启发式规则，比如“正向/反向最大匹配”，“长词优先”等 优点是速度快，但对歧义和未登录词处理不好  基于统计及机器学习的分词方式  基于人工标注的词性和统计特征进行建模，并通过模型计算分词概率 常见的序列标注模型有HMM和CRF 这类分词算法能很好处理歧义和未登录问题，效果比前一类效果好，但是需要">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-16T16:30:15.621Z">
+<meta property="og:updated_time" content="2018-07-16T16:34:52.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分词原理">
 <meta name="twitter:description" content="分词算法的分类基于字符串的匹配  即扫描字符串，如果发现字符串的字串和词相同，就算匹配 通常会加入一些启发式规则，比如“正向/反向最大匹配”，“长词优先”等 优点是速度快，但对歧义和未登录词处理不好  基于统计及机器学习的分词方式  基于人工标注的词性和统计特征进行建模，并通过模型计算分词概率 常见的序列标注模型有HMM和CRF 这类分词算法能很好处理歧义和未登录问题，效果比前一类效果好，但是需要">
@@ -222,7 +222,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -230,7 +230,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
 
       
@@ -316,14 +316,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-07-17 00:28:50 / Updated at: 00:30:15" itemprop="dateCreated datePublished" datetime="2018-07-17T00:28:50+08:00">2018-07-17</time>
+              <time title="Created: 2018-07-17 00:28:50 / Modified: 00:34:52" itemprop="dateCreated datePublished" datetime="2018-07-17T00:28:50+08:00">2018-07-17</time>
             
 
             
@@ -373,8 +373,7 @@
 <li>常见的序列标注模型有HMM和CRF</li>
 <li>这类分词算法能很好处理歧义和未登录问题，效果比前一类效果好，但是需要大量的人工标注数据，分词速度也比较慢</li>
 </ul>
-<p>#基于字符串匹配的分词算法原理</p>
-<ul>
+<h1 id="基于字符串匹配的分词算法原理"><a href="#基于字符串匹配的分词算法原理" class="headerlink" title="基于字符串匹配的分词算法原理"></a>基于字符串匹配的分词算法原理</h1><ul>
 <li>以现有的词典为基础进行</li>
 <li>最大匹配法：以设定的最大此长度为框架，取出其中最长的匹配词<ul>
 <li>例：“中华人民共和国”会被完整取出，而不会进一步被分词</li>
@@ -387,8 +386,7 @@
 </li>
 <li>最短路径分词：寻找单词数最少的分词方式</li>
 </ul>
-<p>#分词的难点</p>
-<ul>
+<h1 id="分词的难点"><a href="#分词的难点" class="headerlink" title="分词的难点"></a>分词的难点</h1><ul>
 <li>分词歧义<ul>
 <li>我个人没意见</li>
 <li>三个人没意见</li>
@@ -498,10 +496,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -522,7 +520,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -541,7 +539,7 @@
                       
                     
                     <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -576,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分词算法的分类"><span class="nav-number">1.</span> <span class="nav-text">分词算法的分类</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分词算法的分类"><span class="nav-number">1.</span> <span class="nav-text">分词算法的分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于字符串匹配的分词算法原理"><span class="nav-number">2.</span> <span class="nav-text">基于字符串匹配的分词算法原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#分词的难点"><span class="nav-number">3.</span> <span class="nav-text">分词的难点</span></a></li></ol></div>
             
 
           </div>
@@ -610,7 +608,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
