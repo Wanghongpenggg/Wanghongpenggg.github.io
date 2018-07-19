@@ -277,6 +277,352 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/19/词云/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wang Hongpeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宏鹏同学的学习笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/19/词云/" itemprop="url">
+                  词云
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Post created: 2018-07-19 22:39:46 / Updated at: 22:47:24" itemprop="dateCreated datePublished" datetime="2018-07-19T22:39:46+08:00">2018-07-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="词云统计"><a href="#词云统计" class="headerlink" title="词云统计"></a>词云统计</h2><p>绝大不扽词频统计工具都是基于分词后构建词条的list进行，因此首先需要完成相应的分词工作。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">f = open(<span class="string">r"C:\Users\Wang\Desktop\PythonData\金庸-射雕英雄传txt精校版.txt"</span> , encoding = <span class="string">"GBK"</span>)</span><br><span class="line">raw = pd.read_table(f,names = [<span class="string">'txt'</span>],sep=<span class="string">'aaa'</span>)<span class="comment">#sep设置成"aaa"是为了把一整段当一个东西读入</span></span><br><span class="line"><span class="comment">#print(raw)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m_head</span><span class="params">(tmpstr)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tmpstr[:<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">m_mid</span><span class="params">(tmpstr)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> tmpstr.find(<span class="string">"回 "</span>)</span><br><span class="line"></span><br><span class="line">raw[<span class="string">'head'</span>] = raw.txt.apply(m_head)<span class="comment">#apply怎么用？</span></span><br><span class="line">raw[<span class="string">'mid'</span>] = raw.txt.apply(m_mid)</span><br><span class="line">raw[<span class="string">'len'</span>] = raw.txt.apply(len)</span><br><span class="line">raw.head(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">chapnum = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(raw)):</span><br><span class="line">    <span class="keyword">if</span> raw[<span class="string">'head'</span>][i] == <span class="string">"第"</span> <span class="keyword">and</span> raw[<span class="string">'mid'</span>][i]&gt;<span class="number">0</span> <span class="keyword">and</span> raw[<span class="string">'len'</span>][i]&lt;<span class="number">30</span>:</span><br><span class="line">        chapnum+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> chapnum &gt; <span class="number">40</span> <span class="keyword">and</span> raw[<span class="string">'txt'</span>][i] == <span class="string">"附录一：成吉思汗家族"</span>:</span><br><span class="line">        chapnum = <span class="number">0</span></span><br><span class="line">    raw.loc[i,<span class="string">'chap'</span>] = chapnum<span class="comment">#设定一个chap列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除临时变量</span></span><br><span class="line"><span class="keyword">del</span> raw[<span class="string">'head'</span>]</span><br><span class="line"><span class="keyword">del</span> raw[<span class="string">'mid'</span>]</span><br><span class="line"><span class="keyword">del</span> raw[<span class="string">'len'</span>]</span><br><span class="line"></span><br><span class="line">rawgrp = raw.groupby(<span class="string">'chap'</span>)</span><br><span class="line">chapter = rawgrp.agg(sum)<span class="comment">#agg怎么用？</span></span><br><span class="line">chapter = chapter[chapter.index!=<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>c:\users\wang\appdata\local\programs\python\python36-32\lib\site-packages\ipykernel_launcher.py:3: ParserWarning: Falling back to the &apos;python&apos; engine because the &apos;c&apos; engine does not support regex separators (separators &gt; 1 char and different from &apos;\s+&apos; are interpreted as regex); you can avoid this warning by specifying engine=&apos;python&apos;.
+  This is separate from the ipykernel package so we can avoid doing imports until
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> jieba </span><br><span class="line"></span><br><span class="line">word_list = jieba.lcut(chapter.txt[<span class="number">1</span>])</span><br><span class="line">word_list[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;第一回&apos;, &apos; &apos;, &apos;风雪&apos;, &apos;惊变&apos;, &apos;钱塘江&apos;, &apos;浩浩&apos;, &apos;江水&apos;, &apos;，&apos;, &apos;日日夜夜&apos;, &apos;无穷&apos;]
+</code></pre><p>构建完list之后，也可以自行编写词频统计程序，框架如下：</p>
+<blockquote>
+<p>遍历整个list，对每个词条：</p>
+</blockquote>
+<blockquote>
+<p>if word in d:</p>
+</blockquote>
+<blockquote>
+<p> d[word] + = 1</p>
+</blockquote>
+<blockquote>
+<p>else:</p>
+</blockquote>
+<blockquote>
+<p> d[word] = 1</p>
+</blockquote>
+<h2 id="使用Pandas统计"><a href="#使用Pandas统计" class="headerlink" title="使用Pandas统计"></a>使用Pandas统计</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(word_list,columns = [<span class="string">'word'</span>])</span><br><span class="line">df.head(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+<div><br><style scoped><br>    .dataframe tbody tr th:only-of-type {<br>        vertical-align: middle;<br>    }<br><br>    .dataframe tbody tr th {<br>        vertical-align: top;<br>    }<br><br>    .dataframe thead th {<br>        text-align: right;<br>    }<br></style><br><table border="1" class="dataframe"><br>  <thead><br>    <tr style="text-align: right;"><br>      <th></th><br>      <th>word</th><br>    </tr><br>  </thead><br>  <tbody><br>    <tr><br>      <th>0</th><br>      <td>第一回</td><br>    </tr><br>    <tr><br>      <th>1</th><br>      <td></td><br>    </tr><br>    <tr><br>      <th>2</th><br>      <td>风雪</td><br>    </tr><br>    <tr><br>      <th>3</th><br>      <td>惊变</td><br>    </tr><br>    <tr><br>      <th>4</th><br>      <td>钱塘江</td><br>    </tr><br>  </tbody><br></table><br></div>
+
+
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">result = df.groupby([<span class="string">'word'</span>]).size()<span class="comment">#按照word来分组，使用size来获得词频</span></span><br><span class="line">print(type(result))</span><br><span class="line"></span><br><span class="line">freqlist = result.sort_values(ascending=<span class="keyword">False</span>)</span><br><span class="line">freqlist[:<span class="number">20</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;pandas.core.series.Series&apos;&gt;
+
+
+
+
+
+word
+，      2034
+。       714
+了       400
+“       344
+：       343
+”       342
+的       291
+道       210
+他       187
+是       168
+杨铁心     148
+在       140
+？       136
+包惜弱     114
+那       108
+又        97
+我        94
+得        91
+也        88
+！        85
+dtype: int64
+</code></pre><h2 id="使用NLTK统计"><a href="#使用NLTK统计" class="headerlink" title="使用NLTK统计"></a>使用NLTK统计</h2><p>NLTK生成的结果为频数字典，在和某些程序包对接时比较有用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> nltk</span><br><span class="line">word_list[:<span class="number">10</span>]</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;第一回&apos;, &apos; &apos;, &apos;风雪&apos;, &apos;惊变&apos;, &apos;钱塘江&apos;, &apos;浩浩&apos;, &apos;江水&apos;, &apos;，&apos;, &apos;日日夜夜&apos;, &apos;无穷&apos;]
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fdist = nltk.FreqDist(word_list) <span class="comment">#生成完整的词条频数字典</span></span><br><span class="line">fdist</span><br></pre></td></tr></table></figure>
+<pre><code>FreqDist({&apos;，&apos;: 2034, &apos;。&apos;: 714, &apos;了&apos;: 400, &apos;“&apos;: 344, &apos;：&apos;: 343, &apos;”&apos;: 342, &apos;的&apos;: 291, &apos;道&apos;: 210, &apos;他&apos;: 187, &apos;是&apos;: 168, ...})
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdist[<span class="string">'颜烈'</span>] <span class="comment">#就像普通的字典一样操作</span></span><br></pre></td></tr></table></figure>
+<pre><code>37
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdist.keys() <span class="comment">#列出词条列表，以list形式出现</span></span><br></pre></td></tr></table></figure>
+<pre><code>dict_keys([&apos;第一回&apos;, &apos; &apos;, &apos;风雪&apos;, &apos;惊变&apos;, &apos;钱塘江&apos;, &apos;浩浩&apos;, &apos;江水&apos;, &apos;，&apos;, &apos;日日夜夜&apos;, &apos;无穷&apos;, &apos;无休&apos;, &apos;的&apos;....])
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fdist.most_common(<span class="number">5</span>) <span class="comment">#显示最高频和相应的频数</span></span><br></pre></td></tr></table></figure>
+<pre><code>[(&apos;，&apos;, 2034), (&apos;。&apos;, 714), (&apos;了&apos;, 400), (&apos;“&apos;, 344), (&apos;：&apos;, 343)]
+</code></pre><h1 id="词云展示"><a href="#词云展示" class="headerlink" title="词云展示"></a>词云展示</h1><h2 id="什么是词云"><a href="#什么是词云" class="headerlink" title="什么是词云"></a>什么是词云</h2><ul>
+<li>本质上是对分词结果频数表的图形化展示</li>
+<li>对文本中出现频率较高的“关键词”予以视觉上的突出，从而过滤掉大量的文本信息，使浏览网页者只要一眼扫过文本就可以领略文本的主旨</li>
+<li>可以在基础词云的基础上进一步衍生，用于表达更富的信息<ul>
+<li>多彩渲染</li>
+<li>加入背景图片</li>
+<li>不同主题的结果比较</li>
+</ul>
+</li>
+</ul>
+<h2 id="常见的词云绘制工具"><a href="#常见的词云绘制工具" class="headerlink" title="常见的词云绘制工具"></a>常见的词云绘制工具</h2><ul>
+<li>Python<ul>
+<li>比较标准的词云生成功能</li>
+<li>可进行背景图片的进一步修饰</li>
+</ul>
+</li>
+<li>R<ul>
+<li>可以展示不用类别间的词云比较</li>
+<li>可以实现彩色动态效果的词云</li>
+<li>可进行背景图片的进一步修饰</li>
+</ul>
+</li>
+<li>Tableau<ul>
+<li>可以实现词云结果的动态检测和展示</li>
+</ul>
+</li>
+<li>专用工具/网站</li>
+</ul>
+<h2 id="绘制词云"><a href="#绘制词云" class="headerlink" title="绘制词云"></a>绘制词云</h2><p>###WordCloud的基本语法</p>
+<p>class worldcloud.WordCloud</p>
+<p>  常用功能：</p>
+<p>   font_path:在图形中使用的字体，默认使用系统字体</p>
+<p>   width：图形的宽度/高度</p>
+<p>   max_words = 需要绘制的最多词条数</p>
+<p>   stopwords = None：停用词列表，不用定时使用系统默认停用词列表</p>
+<p>字体设定：</p>
+<p>   min_font_size = 4/min_font_size = None :字符大小范围</p>
+<p>   font_step = 1 :字号增加的步长</p>
+<p>   relative_scaling = 5 :词条频数比例和字号大小比例的换算关系，默认为504</p>
+<p>   prefer_horizontal = 0.90 : 图中词条水平显示的比例</p>
+<p>  颜色设定：</p>
+<p>   background_color = “black” : 图形背景色</p>
+<p>   mode = “RGB” : 图形颜色编码，如果指定为“RGBA”且背景色为None时，背景色为透明</p>
+<p>   color_func = None : 生成新颜色的函数，使用matplotlib的colormap</p>
+<p> 背景淹模：<br>   mask = None ： 词云使用的背景图（遮罩）</p>
+<h3 id="用原始文本直接分词并绘制"><a href="#用原始文本直接分词并绘制" class="headerlink" title="用原始文本直接分词并绘制"></a>用原始文本直接分词并绘制</h3><p>cloudobj = WordCloud().generate(text)</p>
+<p>   generate实际上是generate_from_text的别名</p>
+<p>文本需要用空格/标点符号（英文的标点）分隔单词，否则不能正确分词</p>
+<pre><code>import wordcloud
+myfont = r&apos;C:\Windows\Fonts\MSYH.ttc&apos;
+text = &apos;this is shanghai, 郭靖，和， 哀牢山 三十六剑&apos;
+cloudobj = wordcloud.WordCloud(font_path = myfont).generate(text)
+print(cloudobj) # &lt;wordcloud.wordcloud.WordCloud object at 0x16601610&gt;
+
+
+
+&lt;wordcloud.wordcloud.WordCloud object at 0x16601610&gt;
+
+
+
+
+import matplotlib.pyplot as plt
+plt.imshow(cloudobj)
+plt.axis(&quot;off&quot;) # 关掉坐标轴
+plt.show()# 默认词表中有 this is 和
+</code></pre><p><img src="output_35_0.png" alt="png"></p>
+<pre><code>cloudobj = wordcloud.WordCloud(font_path= myfont,
+                              width = 360 , height = 180,
+                              mode = &quot;RGBA&quot;,background_color = None).generate(text)
+
+plt.imshow(cloudobj)
+plt.axis(&quot;off&quot;)
+plt.show()
+</code></pre><p><img src="output_36_0.png" alt="png"></p>
+<pre><code>cloudobj.to_file(&quot;词云.png&quot;)# wordcloud.WordCloud(font_path = myfont).generate(text).to_file(r&quot;词云.png&quot;)
+
+
+
+
+
+    &lt;wordcloud.wordcloud.WordCloud at 0x179fa5d0&gt;
+
+
+
+
+import pandas as pd
+import jieba
+
+stoplist = list(pd.read_csv(&apos;C:/Users/Wang/Desktop/PythonData/停用词.txt&apos;, names = [&apos;w&apos;], sep = &apos;aaa&apos;,encoding = &apos;utf-8&apos;,engine=&apos;python&apos;).w)
+
+def m_cut(intxt):
+    return [w for w in jieba.cut(intxt) if w not in stoplist]
+
+
+
+
+cloudobj = wordcloud.WordCloud(font_path = myfont,
+                              width = 1200, height = 800,
+                              mode = &quot;RGBA&quot;, background_color = None).generate(&apos; &apos;.join(m_cut(chapter.txt[1])))
+
+plt.imshow(cloudobj)
+plt.axis(&quot;off&quot;)
+plt.show()
+</code></pre><p><img src="output_39_0.png" alt="png"></p>
+<pre><code>cloudobj.to_file(&quot;词云2.png&quot;)
+
+
+    &lt;wordcloud.wordcloud.WordCloud at 0x17d4d0d0&gt;
+</code></pre><h3 id="基于分词频数绘制"><a href="#基于分词频数绘制" class="headerlink" title="基于分词频数绘制"></a>基于分词频数绘制</h3><p>generate()实际操作</p>
+<pre><code>调用分词函数process_text()
+
+调用基于频数的绘制函数fit_words()
+</code></pre><p>fit_words(dict)</p>
+<pre><code>实际上是generate_from_frequencies的别名
+
+Dict: 由词条和频数构成的字典
+
+
+
+txt_freq = {&apos;张三&apos;:100,&apos;李四&apos;:90,&apos;王二麻子&apos;:50000000} #绝对数量对大小影响不大
+cloudobj = wordcloud.WordCloud(font_path = myfont).fit_words(txt_freq)
+
+plt.imshow(cloudobj)
+plt.axis(&quot;off&quot;)
+plt.show()
+</code></pre><p><img src="output_42_0.png" alt="png"></p>
+<h2 id="用频数生成射雕第一章的词云"><a href="#用频数生成射雕第一章的词云" class="headerlink" title="用频数生成射雕第一章的词云"></a>用频数生成射雕第一章的词云</h2><pre><code>import nltk
+from nltk import FreqDist
+
+tokens = m_cut(chapter.txt[1])
+fdist = FreqDist(tokens) # 生成完整的词条频数字典
+type(fdist)
+
+cloudobj = wordcloud.WordCloud(font_path = myfont,stopwords = stoplist).fit_words(fdist)
+
+plt.imshow(cloudobj)
+plt.axis(&quot;off&quot;)
+plt.show()
+</code></pre><p><img src="output_44_0.png" alt="png"></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/17/词典和停用词/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1321,7 +1667,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -1340,7 +1686,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">Tags</span>
                   
                 </div>
